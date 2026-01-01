@@ -1,18 +1,18 @@
-# 🔍 Deep Research MCP - AI-Powered Research Gap Analyzer
+# Deep Research MCP - AI-Powered Research Gap Analyzer
 
 An intelligent research tool that conducts automated literature reviews and identifies research gaps using multi-agent AI. **Fully free, open-source, and deployable** with your choice of two approaches.
 
-## ✨ Features
+##  Features
 
-- 🤖 **4-Agent AI Research System** - Specialized agents for searching, analyzing, and synthesizing research
-- 🔍 **Research Gap Detection** - Identifies unexplored combinations and contradictions in research
-- 📚 **Academic Paper Search** - Integrates with LinkUp API for deep paper discovery
-- 📊 **Multi-Format Export** - JSON, Markdown, PDF exports of research findings
-- 🏠 **Local Development** - Run with Ollama + DeepSeek-R1 7B for best quality (GPU optional)
-- ☁️ **Cloud Deployment** - Deploy free to Streamlit Cloud with Groq API
-- 🔄 **Dual Mode** - Switch between local Ollama and Groq API with one config change
-- 🛠️ **MCP Support** - Model Context Protocol server for IDE integration (optional)
-- 💰 **Fully Free** - No credit card needed, uses free tiers of all APIs
+-  **4-Agent AI Research System** - Specialized agents for searching, analyzing, and synthesizing research
+-  **Research Gap Detection** - Identifies unexplored combinations and contradictions in research
+-  **Academic Paper Search** - Integrates with LinkUp API for deep paper discovery
+-  **Multi-Format Export** - JSON, Markdown, PDF exports of research findings
+-  **Local Development** - Run with Ollama + DeepSeek-R1 7B for best quality (GPU optional)
+-  **Cloud Deployment** - Deploy free to Streamlit Cloud with Groq API
+-  **Dual Mode** - Switch between local Ollama and Groq API with one config change
+- 🛠️**MCP Support** - Model Context Protocol server for IDE integration (optional)
+-  **Fully Free** - No credit card needed, uses free tiers of all APIs
 
 ---
 
