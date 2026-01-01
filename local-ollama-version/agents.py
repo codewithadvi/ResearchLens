@@ -1,10 +1,14 @@
 import os
+import warnings
 from typing import Type
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 from linkup import LinkupClient
 from crewai import Agent, Task, Crew, Process, LLM
 from crewai.tools import BaseTool
+
+# Suppress CrewAI signal handler warnings in Streamlit
+warnings.filterwarnings("ignore", message=".*signal only works in main thread.*")
 
 # Load environment variables
 load_dotenv()
