@@ -731,20 +731,6 @@ System Flow:
 └─ Report: SOTA + Gap + Future directions
 ```
 
-### Query 2: Biotech Research
-
-```
-Topic: "CRISPR off-target effects and mitigation strategies"
-
-System Flow:
-├─ Search CRISPR safety papers
-├─ Extract: SpCas9, PAM optimization, guideRNA design
-├─ Identify gap: "Limited research on combined PAM+guideRNA optimization"
-└─ Report: Current state + contradictions + new directions
-```
-
----
-
 ## 📈 Performance Metrics
 
 ### Local Development (Ollama)
@@ -768,100 +754,10 @@ System Flow:
 **Groq is actually faster** due to inference optimization! ⚡
 
 ---
-
-## 🐛 Troubleshooting
-
-### Issue: "No LLM available"
-
-**Solution:**
-```bash
-# Option 1: Install Ollama
-ollama pull deepseek-r1:7b
-
-# Option 2: Add Groq API key to .env
-GROQ_API_KEY=your_key_here
-```
-
-### Issue: Ollama not connecting
-
-**Solution:**
-```bash
-# Make sure Ollama is running
-ollama serve
-
-# Test connection
-curl http://localhost:11434/api/tags
-```
-
-### Issue: App slow on Streamlit Cloud
-
-**Cause:** Using Groq free tier (shared resources)
-
-**Solution:**
-1. Use local development for faster iteration
-2. Upgrade Groq to paid tier for production (cheap: ~$0.14 per 1M tokens)
-3. Add caching to LinkUp searches
-
-### Issue: LinkUp API returning empty results
-
-**Solution:**
-1. Check API key is valid
-2. Try a different search query
-3. Upgrade LinkUp plan if hitting rate limits
-
----
-
-## 🚀 Future Enhancements
-
-- [ ] Vector database for cached search results
-- [ ] Batch analysis for multiple topics
-- [ ] BibTeX export for academic citations
-- [ ] Integration with Zotero/Mendeley
-- [ ] Real-time paper feed monitoring
-- [ ] Research collaboration workspace
-- [ ] Custom agent creation UI
-- [ ] Multi-language support
-
----
-
-## 📚 Documentation
-
-- **agents.py**: 4-agent system with detailed agent prompts
-- **app.py**: Streamlit UI with session state management
-- **server.py**: MCP protocol server for IDE integration
-- **requirements.txt**: Minimal dependencies (6 core packages)
-
----
-
 ## 📄 License
 
 MIT License - Use freely for personal or commercial projects
-
 ---
-
-## 💬 Support
-
-- **GitHub Issues**: Open an issue for bugs/features
-- **Discussions**: Ask questions in GitHub Discussions
-- **Documentation**: Check inline code comments for details
-
----
-
-## 🎯 Why This Project?
-
-✅ **Portfolio Ready** - Shows full-stack AI development  
-✅ **Resume-Worthy** - Multi-agent systems, APIs, cloud deployment  
-✅ **Fully Free** - No credit cards required  
-✅ **Dual Deployment** - Local dev + cloud production  
-✅ **Production Grade** - Error handling, logging, exports  
-✅ **Educational** - Learn CrewAI, Streamlit, MCP, APIs  
-
----
-
-**Built with ❤️ using Streamlit, CrewAI, Groq, and LinkUp**
-
-Last updated: January 2, 2026
-
 ## Quick Start
 
 ### 1. Clone & Setup
@@ -951,26 +847,7 @@ In Streamlit Cloud app settings:
    ```
 3. Reboot app
 
-**Your app is now live and free!** 🎉
-
-## How It Works
-
-### The 4-Agent Research System
-
-1. **Literature Reviewer Agent** - Searches for relevant papers using LinkUp
-2. **Methodology Analyst Agent** - Extracts datasets, algorithms, and metrics
-3. **Research Gap Analyst Agent** - Identifies unexplored combinations and gaps
-4. **Report Writer Agent** - Synthesizes findings into structured reports
-
-### Automatic LLM Selection
-
-```
-Local Development:   Ollama → DeepSeek-R1 7B (best quality)
-                        ↓
-Streamlit Cloud:     Groq → Mixtral 8x7B (free, fast)
-```
-
-The app auto-detects your environment and uses the best available LLM.
+**Your app is now live and free!** 
 
 ## Project Structure
 
@@ -1014,37 +891,4 @@ Automatically uses Groq free tier. Fast inference, completely free.
 - **Ollama:** Free, local only
 - **Total:** $0/month if using free tiers ✅
 
-## Troubleshooting
 
-### "No LLM available" error
-- Make sure `GROQ_API_KEY` is in `.env` (local) or Secrets (cloud)
-- OR install Ollama and pull deepseek-r1:7b model
-
-### App slow on Streamlit Cloud
-- Using Groq free tier (shared resources)
-- Typical response time: 30-60 seconds
-- Upgrade to paid Groq tier for faster responses (~$0.14 per 1M tokens)
-
-### Ollama not connecting
-- Ensure Ollama is running: `ollama serve`
-- Check it's accessible at `http://localhost:11434`
-
-## Future Improvements
-
-- [ ] Long-term memory with vector database
-- [ ] Caching search results
-- [ ] Batch analysis for multiple topics
-- [ ] Export to academic formats (BibTeX, etc.)
-- [ ] Integration with Zotero/Mendeley
-
-## License
-
-MIT License - feel free to use for personal or commercial projects
-
-## Questions?
-
-Open an issue on GitHub or check the documentation in the code comments.
-
----
-
-**Built with ❤️ using Streamlit, CrewAI, and free APIs**
