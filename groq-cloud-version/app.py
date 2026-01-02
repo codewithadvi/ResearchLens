@@ -163,6 +163,22 @@ if prompt := st.chat_input("What do you want to research?"):
             progress_bar.empty()
             progress_text.empty()
             
+            error_msg = str(e)
+            
+            # Check if it's a rate limit error
+            if "rate_limit" in error_msg.lower() or "ratelimit" in error_msg.lower():
+                st.warning("⚠️ **Groq Rate Limit Reached**")
+                st.info("🕐 The free tier has a limit of 12,000 tokens/minute. Wait 15 seconds and try again.")
+                st.markdown("💡 **Tip:** The app now uses a faster model to reduce rate limit issues!")
+            else:
+                st.error(f"❌ Error: {error_msg}")
+            
+            result = f"Research interrupted. Please try again."
+            
+        except Exception as e:
+            progress_bar.empty()
+            progress_text.empty()
+            
             error_msg = f"An error occurred: {e}"
             st.error(error_msg)
             

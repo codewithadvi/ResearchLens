@@ -17,7 +17,7 @@ load_dotenv()
 os.environ["OTEL_SDK_DISABLED"] = "true"
 
 # --- 1. SETUP LLM (GROQ ONLY - Cloud Optimized) ---
-def get_llm_client():
+def get_llm_client(use_fast_model=False):
     """Uses Groq Cloud API (free tier with generous limits)"""
     groq_key = os.getenv("GROQ_API_KEY")
     if not groq_key:
@@ -26,8 +26,11 @@ def get_llm_client():
             "Add to .env: GROQ_API_KEY=your_key"
         )
     
+    # Use faster, smaller model for final task to avoid rate limits
+    model = "groq/llama-3.1-8b-instant" if use_fast_model else "groq/llama-3.3-70b-versatile"
+    
     return LLM(
-        model="groq/llama-3.3-70b-versatile",  # Updated to supported model
+        model=model,
         api_key=groq_key
     )
 
@@ -86,12 +89,14 @@ def create_research_crew(query: str):
     )
 
     # --- AGENT 4: The Publisher (Universal Fix) ---
+    # Use faster model to avoid rate limits on final formatting task
+    fast_client = get_llm_client(use_fast_model=True)
     peer_reviewer = Agent(
         role="Final Publisher",
         goal="Output the FINAL, EXTENDED Report. Do not summarize.",
         backstory="You are a Publisher. Your job is to take the draft and the raw data and PRINT THE FULL FINAL DOCUMENT. You do not give feedback. You output the final 1000+ word article.",
         verbose=True,
-        llm=client,
+        llm=fast_client,
     )
 
     # --- TASKS (Dynamic based on {query}) ---
